@@ -46,13 +46,15 @@ def get_rolls_by_user(data: list) -> dict:
     return rolls_by_user
 
 
-def count_successes(roll_list: list) -> int:
+def count_successes(roll_list: list, calc_percent=True) -> int:
     successes = 0
     for roll in roll_list:
         if roll == MAX_DIE:
             successes += 2
         elif roll >= SUCCESS_THRESHOLD:
             successes += 1
+    if not calc_percent:
+        return successes
     return successes / len(roll_list) * 100
 
 
